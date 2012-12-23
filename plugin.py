@@ -1,3 +1,4 @@
+import os
 import Image
 
 class ImageManipulation():
@@ -121,7 +122,8 @@ class ImageManipulation():
 		for image in self.get_selection_mimes():
 			try:
 				im = Image.open(image)
-				im.save(image+'.'+format, format=format)
+				file_name = '{0}.{1}'.format(os.path.splitext(image)[0], format)
+				im.save(file_name, format=format)
 			except IOError:
 					print "cannot convert", image
 
